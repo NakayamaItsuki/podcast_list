@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ポッドキャストリスト</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ポッドキャストリスト</h1>
+            <p class="date">最終更新: <span id="last-updated"></span></p>
+            <button id="toggle-admin" class="admin-toggle-btn">管理モード</button>
+        </header>
+
+        <!-- 認証モーダル -->
+        <div id="auth-modal" class="modal">
+            <div class="modal-content">
+                <h3>管理者認証</h3>
+                <p>管理モードにアクセスするにはパスワードを入力してください。</p>
+                <div class="form-group">
+                    <label for="admin-password">パスワード:</label>
+                    <input type="password" id="admin-password" placeholder="パスワードを入力">
+                </div>
+                <div class="form-buttons">
+                    <button id="auth-submit" class="btn save-btn">認証</button>
+                    <button id="auth-cancel" class="btn cancel-btn">キャンセル</button>
+                </div>
+                <p id="auth-error" class="error-message"></p>
+            </div>
+        </div>
+
+        <div id="admin-panel" class="admin-panel">
+            <h2>ポッドキャスト管理</h2>
+            
+            <div class="admin-actions">
+                <form id="podcast-form" class="admin-form">
+                    <h3>ポッドキャストを追加/編集</h3>
+                    <input type="hidden" id="podcast-id">
+                    <div class="form-group">
+                        <label for="podcast-title">タイトル:</label>
+                        <input type="text" id="podcast-title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="podcast-category">カテゴリー:</label>
+                        <select id="podcast-category">
+                            <option value="お笑い">お笑い</option>
+                            <option value="テクノロジー">テクノロジー</option>
+                            <option value="ニュース">ニュース</option>
+                            <option value="その他">その他</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="podcast-url">URL:</label>
+                        <input type="url" id="podcast-url">
+                    </div>
+                    <div class="form-group">
+                        <label for="podcast-image">画像URL:</label>
+                        <input type="url" id="podcast-image">
+                    </div>
+                    <div class="form-buttons">
+                        <button type="submit" class="btn save-btn">保存</button>
+                        <button type="button" id="cancel-edit" class="btn cancel-btn">キャンセル</button>
+                    </div>
+                </form>
+                
+                <div class="sort-controls">
+                    <h3>並べ替え</h3>
+                    <div class="form-group">
+                        <label for="sort-option">並べ替え順:</label>
+                        <select id="sort-option">
+                            <option value="title">タイトル順</option>
+                            <option value="category">カテゴリー順</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="podcast-list-container">
+            <table class="podcast-table">
+                <thead>
+                    <tr>
+                        <th>プログラム名</th>
+                        <th>カテゴリー</th>
+                        <th id="actions-header" class="actions-header hidden">操作</th>
+                    </tr>
+                </thead>
+                <tbody id="podcast-list">
+                    <!-- JavaScriptでリストが生成されます -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
