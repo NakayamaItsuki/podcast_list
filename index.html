@@ -31,6 +31,22 @@
             </div>
         </div>
 
+        <!-- データエクスポートモーダル -->
+        <div id="export-modal" class="modal">
+            <div class="modal-content export-modal-content">
+                <h3>データエクスポート</h3>
+                <p>以下のコードをコピーして、script.jsファイルの初期データ部分に貼り付けてください。</p>
+                <div class="export-code-container">
+                    <pre id="export-code" class="export-code"></pre>
+                </div>
+                <div class="form-buttons">
+                    <button id="copy-code" class="btn save-btn">コピー</button>
+                    <button id="export-close" class="btn cancel-btn">閉じる</button>
+                </div>
+                <p id="copy-message" class="success-message"></p>
+            </div>
+        </div>
+
         <div id="admin-panel" class="admin-panel">
             <h2>ポッドキャスト管理</h2>
             
@@ -65,14 +81,22 @@
                     </div>
                 </form>
                 
-                <div class="sort-controls">
-                    <h3>並べ替え</h3>
-                    <div class="form-group">
-                        <label for="sort-option">並べ替え順:</label>
-                        <select id="sort-option">
-                            <option value="title">タイトル順</option>
-                            <option value="category">カテゴリー順</option>
-                        </select>
+                <div class="admin-utils">
+                    <div class="sort-controls">
+                        <h3>並べ替え</h3>
+                        <div class="form-group">
+                            <label for="sort-option">並べ替え順:</label>
+                            <select id="sort-option">
+                                <option value="title">タイトル順</option>
+                                <option value="category">カテゴリー順</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="export-controls">
+                        <h3>データエクスポート</h3>
+                        <p>現在のデータをコードとして出力します。</p>
+                        <button id="export-data" class="btn export-btn">データをエクスポート</button>
                     </div>
                 </div>
             </div>
